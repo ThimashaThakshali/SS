@@ -9,11 +9,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Surface
 import com.example.ss.R
 
 @Composable
@@ -59,25 +62,34 @@ fun SetupScreen(navController: NavController) {
                 }
             }
         )
+        Spacer(modifier = Modifier.height(20.dp))
     }
 }
 
 @Composable
 fun SetupOption(iconRes: Int, text: String, onClick: () -> Unit) {
-    Row(
+    Surface(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
             .clickable { onClick() },
-        verticalAlignment = Alignment.CenterVertically
+        shape = RoundedCornerShape(12.dp), // Rounded corners with a radius of 12dp
+        color = Color(0xFF0891B2) // Background color
     ) {
-        Image(
-            painter = painterResource(id = iconRes),
-            contentDescription = text,
-            modifier = Modifier.size(40.dp)
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = text)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = iconRes),
+                contentDescription = text,
+                modifier = Modifier.size(40.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = text, color = Color.White) // Set text color to white for better contrast
+        }
     }
 }
 
