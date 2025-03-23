@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.ui.android)
     implementation(libs.runtime.android)
     implementation(libs.activity.ktx)
+    implementation(libs.runtime.livedata)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)

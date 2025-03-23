@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.ss.presentation.screens.AlertMessageScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,13 +46,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppNavigation(navController: NavHostController, isFirstLaunch: Boolean) {
     NavHost(navController = navController, startDestination = if (isFirstLaunch) "mainScreen" else "setupScreen") {
-        composable("mainScreen") { MainScreen(navController) }
+        composable("welcomeScreen") { WelcomeScreen(navController) }
         composable("setupScreen") { SetupScreen(navController) }
+        composable("alertMessageScreen") { AlertMessageScreen(navController) }
     }
 }
 
 @Composable
-fun MainScreen(navController: NavController) {
+fun WelcomeScreen(navController: NavController) {
     SSTheme {
         Column(
             modifier = Modifier

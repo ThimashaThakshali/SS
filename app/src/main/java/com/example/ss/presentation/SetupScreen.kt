@@ -16,7 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
+import androidx.wear.compose.material.MaterialTheme
 import com.example.ss.R
 
 @Composable
@@ -30,14 +32,14 @@ fun SetupScreen(navController: NavController) {
     ) {
         Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "Set Up Screen")
+        Text(text = "Set Up Screen", style = MaterialTheme.typography.title1)
 
         Spacer(modifier = Modifier.height(16.dp))
 
         SetupOption(
             iconRes = R.drawable.alert_icon,
             text = "Add Alerts",
-            onClick = { /* Navigate to Add Alerts Screen */ }
+            onClick = {navController.navigate("alertMessageScreen") /* Navigate to Add Alerts Screen */ }
         )
 
         SetupOption(
@@ -54,14 +56,9 @@ fun SetupScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        Text(
-            text = "Continue",
-            modifier = Modifier.clickable {
-                navController.navigate("mainScreen") {
-                    popUpTo("setupScreen") { inclusive = true }
-                }
-            }
-        )
+        Button(onClick = { navController.navigate("welcomeScreen") }) {
+            Text("Continue")
+        }
         Spacer(modifier = Modifier.height(20.dp))
     }
 }
